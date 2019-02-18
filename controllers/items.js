@@ -1,7 +1,12 @@
 const { Router } = require('express');
-const pokemonService = require('../services/pokemon')
-const clashService = require('../services/clash')
-const driversService = require('../services/drivers')
+const { 
+  pokemonService,
+  clashService,
+  driversService,
+  getServiceById
+} = require('../services')
+
+const 
 
 module.exports = new Router()
   .get('/', async (req, res) => {
@@ -18,6 +23,8 @@ module.exports = new Router()
     res.status(200).json(mergedData)
   })
   .get('/:id', (req, res) => {
-    // Code here
-    res.sendStatus(200);
+    const {id} = req.params
+    const service = getServiceById(id)
+    const data = service.get(id)
+    res.status(200).send(type)
   });
