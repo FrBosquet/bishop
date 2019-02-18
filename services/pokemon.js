@@ -5,7 +5,7 @@ const extractId = url => url.match(/(?<=pokemon\/)\d+/)[0]
 
 module.exports = {
   getAll: async () => {
-    const { data: { results: pokemons } } = await axios.get(baseUrl)
+    const { data: { results: pokemons } } = await axios.get(`${baseUrl}?limit=1000`)
     const normalizedData = pokemons.map(({name, url}) => ({
       name,
       id: extractId(url)
