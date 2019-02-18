@@ -14,7 +14,7 @@ const mapDataToDetail = ({ name, id, sprites: { front_default: image }}) => ({
 
 module.exports = {
   getAll: async () => {
-    const { data: { results: pokemons } } = await axios.get(`${baseUrl}?limit=1000`)
+    const { data: { results: pokemons } } = await axios.get(baseUrl)
     const normalizedData = pokemons.map(mapDataToListItem)
     return normalizedData
   },
