@@ -1,12 +1,14 @@
 const { Router } = require('express');
 const pokemonService = require('../services/pokemon')
 const clashService = require('../services/clash')
+const driversService = require('../services/drivers')
 
 module.exports = new Router()
   .get('/', async (req, res) => {
     const data = await Promise.all([
       pokemonService.getAll(),
-      clashService.getAll()
+      clashService.getAll(),
+      driversService.getAll()
     ])
 
     const mergedData = data.reduce(
