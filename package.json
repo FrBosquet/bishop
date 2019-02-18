@@ -3,6 +3,7 @@
   "description": "Code test interview. CODENAME: Bishop",
   "dependencies": {
     "axios": "^0.18.0",
+    "dotenv": "^6.2.0",
     "express": "^4.16.3"
   },
   "devDependencies": {
