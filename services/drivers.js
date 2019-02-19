@@ -29,11 +29,14 @@ module.exports = {
     return normalizedData
   },
   get: async id => {
-    const {data} = await axios.get(`${baseUrl}${id}`)
-    const [parsedData] = await parseXML(data)
-    const normalizedData = mapDataToDetail(parsedData)
+    try{
+      const {data} = await axios.get(`${baseUrl}${id}`)
+      const [parsedData] = await parseXML(data)
+      const normalizedData = mapDataToDetail(parsedData)
 
-    return normalizedData
-
+      return normalizedData
+    } catch(e) {
+      return 'No items found!'
+    }
   }
 }

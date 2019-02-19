@@ -19,8 +19,12 @@ module.exports = {
     return normalizedData
   },
   get: async id => {
-    const {data} = await axios.get(`${baseUrl}${id}`)
-    const normalizedData = mapDataToDetail(data)
-    return normalizedData
+    try{
+      const {data} = await axios.get(`${baseUrl}${id}`)
+      const normalizedData = mapDataToDetail(data)
+      return normalizedData
+    } catch(e) {
+      return 'No items found!'
+    }
   }
 }
